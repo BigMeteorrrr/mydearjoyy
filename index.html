@@ -9,7 +9,6 @@
       --bg: #fff5f7;
       --card: #ffffff;
       --primary: #e11d48;
-      --primary-dark: #be123c;
       --primary-light: #ffe4e6;
       --text: #334155;
       --heading: #1e293b;
@@ -22,7 +21,7 @@
     header p { color: #64748b; font-size: 0.95rem; }
 
     /* Navigation Tabs */
-    .tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 1.5rem; max-width: 850px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 1.5rem; max-width: 850px; position: relative; z-index: 10; }
     .tab-btn {
       background: var(--card); border: 2px solid var(--primary-light); color: var(--heading);
       padding: 0.55rem 1rem; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
@@ -115,13 +114,13 @@
   </header>
 
   <nav class="tabs">
-    <button class="tab-btn active" onclick="openTab(event, 'home')">🏠 Home & Timer</button>
-    <button class="tab-btn" onclick="openTab(event, 'gallery')">📸 Photo Album</button>
-    <button class="tab-btn" onclick="openTab(event, 'timeline')">🗓️ Our Story</button>
-    <button class="tab-btn" onclick="openTab(event, 'letters')">💌 Open When...</button>
-    <button class="tab-btn" onclick="openTab(event, 'quiz')">🎯 Couple Quiz</button>
-    <button class="tab-btn" onclick="openTab(event, 'bucket')">✨ Bucket List & Jar</button>
-    <button class="tab-btn" onclick="openTab(event, 'surprise')">🎁 Surprise</button>
+    <button type="button" class="tab-btn active" data-target="home">🏠 Home & Timer</button>
+    <button type="button" class="tab-btn" data-target="gallery">📸 Photo Album</button>
+    <button type="button" class="tab-btn" data-target="timeline">🗓️ Our Story</button>
+    <button type="button" class="tab-btn" data-target="letters">💌 Open When...</button>
+    <button type="button" class="tab-btn" data-target="quiz">🎯 Couple Quiz</button>
+    <button type="button" class="tab-btn" data-target="bucket">✨ Bucket List & Jar</button>
+    <button type="button" class="tab-btn" data-target="surprise">🎁 Surprise</button>
   </nav>
 
   <main class="container">
@@ -158,4 +157,4 @@
       <p class="intro">Tap any photo below to view it full-size and read the story behind it.</p>
 
       <div class="gallery">
-        <!-- Replace src="photo1.jpg" with your actual uploaded image filename -->
+        <div class="photo-card" onclick="openModal('https://unsplash.com', 'Our First Date ☕', 'I was so nervous before meeting you, but the moment you smiled, everything felt effortless.')">
