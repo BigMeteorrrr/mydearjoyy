@@ -3,176 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You ❤️</title>
+  <title>Our Little Universe ❤️</title>
   <style>
     :root {
       --bg: #fff5f7;
       --card: #ffffff;
       --primary: #e11d48;
+      --primary-dark: #be123c;
       --primary-light: #ffe4e6;
       --text: #334155;
       --heading: #1e293b;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem; }
-    header { text-align: center; margin-bottom: 1.5rem; }
-    header h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 0.4rem; }
-    header p { color: #64748b; font-size: 1rem; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 4rem; }
+
+    header { text-align: center; margin-bottom: 1.2rem; }
+    header h1 { color: var(--primary); font-size: 2.1rem; margin-bottom: 0.3rem; }
+    header p { color: #64748b; font-size: 0.95rem; }
 
     /* Navigation Tabs */
-    .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 1.5rem; max-width: 850px; }
     .tab-btn {
       background: var(--card); border: 2px solid var(--primary-light); color: var(--heading);
-      padding: 0.6rem 1.2rem; border-radius: 999px; cursor: pointer; font-weight: 600; transition: all 0.2s;
+      padding: 0.55rem 1rem; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
     }
     .tab-btn:hover { background: var(--primary-light); }
-    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25); }
 
-    /* Content Sections */
-    .container { width: 100%; max-width: 800px; background: var(--card); border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(225, 29, 72, 0.08); }
+    /* Main Card Container */
+    .container { width: 100%; max-width: 850px; background: var(--card); border-radius: 18px; padding: 2rem; box-shadow: 0 10px 30px rgba(225, 29, 72, 0.08); }
     .tab-content { display: none; animation: fadeIn 0.3s ease; }
     .tab-content.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
     h2 { color: var(--heading); margin-bottom: 1rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem; }
+    p.intro { color: #64748b; margin-bottom: 1.2rem; line-height: 1.5; }
 
-    /* Photo Gallery */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-    .photo-card { background: var(--bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    /* Page 1: Live Counter & About Us */
+    .counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin: 1.5rem 0; }
+    .time-box { background: var(--primary-light); padding: 1rem 0.5rem; border-radius: 12px; text-align: center; }
+    .time-box span { display: block; font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+    .time-box small { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--heading); }
+    .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
+    .info-card { background: #fffafb; border: 1px solid var(--primary-light); padding: 1.2rem; border-radius: 12px; }
+    .info-card h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: 0.4rem; }
+
+    /* Page 2: Photo Gallery + Lightbox */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+    .photo-card { background: var(--bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; }
+    .photo-card:hover { transform: translateY(-4px); }
     .photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
-    .photo-card p { padding: 0.8rem; font-size: 0.95rem; text-align: center; }
+    .photo-card .caption { padding: 0.9rem; }
+    .photo-card h4 { color: var(--heading); font-size: 1rem; margin-bottom: 0.25rem; }
+    .photo-card p { font-size: 0.88rem; color: #64748b; }
 
-    /* Love Letter */
-    .letter { line-height: 1.8; font-size: 1.05rem; white-space: pre-line; background: #fffafb; padding: 1.5rem; border-left: 4px solid var(--primary); border-radius: 8px; }
+    /* Lightbox Modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); z-index: 100; align-items: center; justify-content: center; padding: 1rem; }
+    .modal.open { display: flex; }
+    .modal-box { background: #fff; max-width: 550px; width: 100%; border-radius: 16px; overflow: hidden; text-align: center; padding-bottom: 1.2rem; }
+    .modal-box img { width: 100%; max-height: 60vh; object-fit: contain; background: #000; }
+    .modal-box h3 { margin: 1rem 1rem 0.4rem; color: var(--heading); }
+    .modal-box p { margin: 0 1.2rem 1rem; color: var(--text); }
 
-    /* Timeline */
-    .timeline-item { border-left: 3px solid var(--primary); padding-left: 1.2rem; margin-bottom: 1.5rem; position: relative; }
+    /* Page 3: Detailed Timeline */
+    .timeline-item { border-left: 3px solid var(--primary); padding-left: 1.3rem; margin-bottom: 1.6rem; position: relative; }
     .timeline-item::before { content: '❤️'; position: absolute; left: -11px; top: 0; background: var(--card); font-size: 0.9rem; }
-    .timeline-date { font-weight: bold; color: var(--primary); font-size: 0.9rem; }
+    .timeline-date { font-weight: 700; color: var(--primary); font-size: 0.85rem; text-transform: uppercase; }
+    .timeline-title { font-weight: 700; color: var(--heading); font-size: 1.1rem; margin: 0.2rem 0; }
 
-    /* Interactive Love Jar */
-    .jar-box { text-align: center; padding: 1.5rem; }
-    .note-display { min-height: 80px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-style: italic; color: var(--heading); background: var(--primary-light); border-radius: 12px; padding: 1.2rem; margin: 1.2rem 0; }
-    .action-btn { background: var(--primary); color: #fff; border: none; padding: 0.8rem 1.6rem; border-radius: 999px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: transform 0.1s; }
-    .action-btn:active { transform: scale(0.96); }
+    /* Page 4: Open When Envelopes */
+    .envelopes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .envelope { background: var(--primary-light); border: 2px dashed var(--primary); border-radius: 12px; padding: 1.3rem; text-align: center; cursor: pointer; transition: 0.2s; }
+    .envelope:hover { background: #fecdd3; }
+    .envelope-icon { font-size: 2rem; margin-bottom: 0.4rem; }
+    .envelope-msg { display: none; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(225, 29, 72, 0.2); font-size: 0.95rem; color: var(--heading); line-height: 1.5; }
+    .envelope.opened { background: #fff; border-style: solid; }
+    .envelope.opened .envelope-msg { display: block; }
 
-    /* Bucket List */
-    .bucket-list { list-style: none; }
-    .bucket-list li { padding: 0.7rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 0.7rem; font-size: 1.05rem; cursor: pointer; }
+    /* Page 5: Love Quiz */
+    .quiz-q { margin-bottom: 1.3rem; padding: 1rem; background: #fffafb; border-radius: 12px; border: 1px solid var(--primary-light); }
+    .quiz-q p { font-weight: 600; margin-bottom: 0.7rem; color: var(--heading); }
+    .quiz-opt { display: block; width: 100%; text-align: left; background: #fff; border: 1px solid #cbd5e1; padding: 0.6rem 0.9rem; border-radius: 8px; margin-bottom: 0.4rem; cursor: pointer; }
+    .quiz-opt:hover { background: var(--primary-light); }
+    .quiz-opt.correct { background: #dcfce7; border-color: #16a34a; color: #166534; font-weight: 600; }
+    .quiz-opt.wrong { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+
+    /* Page 6: Bucket List & Reason Jar */
+    .bucket-list { list-style: none; margin-bottom: 2rem; }
+    .bucket-list li { padding: 0.75rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
     .bucket-list li.done { text-decoration: line-through; color: #94a3b8; }
+    .note-display { min-height: 75px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-style: italic; background: var(--primary-light); border-radius: 12px; padding: 1rem; margin: 1rem 0; text-align: center; }
+
+    /* Page 7: Playful Surprise Question */
+    .surprise-box { text-align: center; padding: 2rem 1rem; position: relative; min-height: 260px; }
+    .btn-group { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .btn { background: var(--primary); color: #fff; border: none; padding: 0.75rem 1.6rem; border-radius: 999px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+    .btn-no { background: #64748b; position: relative; transition: 0.15s ease; }
+    #surprise-reply { display: none; margin-top: 1.5rem; font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+
+    @media (max-width: 520px) {
+      .counter-grid { grid-template-columns: repeat(2, 1fr); }
+      .container { padding: 1.3rem; }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Happy Anniversary, My Love ❤️</h1>
-    <p>A little corner of the internet made just for you</p>
+    <h1>For My Favorite Person ❤️</h1>
+    <p>Tap through the pages to explore our memories, notes, and surprises</p>
   </header>
 
   <nav class="tabs">
-    <button class="tab-btn active" onclick="openTab(event, 'letter')">💌 Love Letter</button>
-    <button class="tab-btn" onclick="openTab(event, 'gallery')">📸 Our Photos</button>
+    <button class="tab-btn active" onclick="openTab(event, 'home')">🏠 Home & Timer</button>
+    <button class="tab-btn" onclick="openTab(event, 'gallery')">📸 Photo Album</button>
     <button class="tab-btn" onclick="openTab(event, 'timeline')">🗓️ Our Story</button>
-    <button class="tab-btn" onclick="openTab(event, 'jar')">✨ Reason Generator</button>
-    <button class="tab-btn" onclick="openTab(event, 'bucket')">✈️ Bucket List</button>
+    <button class="tab-btn" onclick="openTab(event, 'letters')">💌 Open When...</button>
+    <button class="tab-btn" onclick="openTab(event, 'quiz')">🎯 Couple Quiz</button>
+    <button class="tab-btn" onclick="openTab(event, 'bucket')">✨ Bucket List & Jar</button>
+    <button class="tab-btn" onclick="openTab(event, 'surprise')">🎁 Surprise</button>
   </nav>
 
   <main class="container">
-    <!-- TAB 1: LOVE LETTER -->
-    <section id="letter" class="tab-content active">
-      <h2>A Note For You</h2>
-      <div class="letter">
-        My dearest [Her Name],
 
-        From the moment we met, you have brought so much joy, laughter, and warmth into my life. Every day with you feels like my favorite adventure.
+    <!-- PAGE 1: HOME & LIVE RELATIONSHIP TIMER -->
+    <section id="home" class="tab-content active">
+      <h2>Welcome To Our Corner of the Web</h2>
+      <p class="intro">Every second with you counts. Here is how long we have been making memories together:</p>
 
-        I built this little website so you always have a place to visit whenever you miss me or want to remember how much you mean to me.
+      <div class="counter-grid">
+        <div class="time-box"><span id="days">0</span><small>Days</small></div>
+        <div class="time-box"><span id="hours">0</span><small>Hours</small></div>
+        <div class="time-box"><span id="minutes">0</span><small>Minutes</small></div>
+        <div class="time-box"><span id="seconds">0</span><small>Seconds</small></div>
+      </div>
 
-        Forever yours,
-        [Your Name]
+      <div class="info-cards">
+        <div class="info-card">
+          <h3>💑 About Us</h3>
+          <p><strong>First Met:</strong> [Add Date & Place]<br>
+             <strong>Official Date:</strong> [Add Anniversary Date]<br>
+             <strong>Our Song:</strong> [Add Song Title]</p>
+        </div>
+        <div class="info-card">
+          <h3>🌟 Why I Made This</h3>
+          <p>I wanted to build something permanent where you can look back at our photos, read my letters anytime you miss me, and see how much I appreciate you.</p>
+        </div>
       </div>
     </section>
 
-    <!-- TAB 2: PHOTO GALLERY -->
+    <!-- PAGE 2: PHOTO GALLERY WITH LIGHTBOX -->
     <section id="gallery" class="tab-content">
-      <h2>Our Favorite Memories</h2>
+      <h2>Our Photo Album</h2>
+      <p class="intro">Tap any photo below to view it full-size and read the story behind it.</p>
+
       <div class="gallery">
-        <div class="photo-card">
-          <!-- Replace src with your image filename like "photo1.jpg" -->
-          <img src="https://unsplash.com" alt="Memory 1" />
-          <p>Our very first date together ☕</p>
-        </div>
-        <div class="photo-card">
-          <img src="https://unsplash.com" alt="Memory 2" />
-          <p>Watching the sunset by the beach 🌅</p>
-        </div>
-        <div class="photo-card">
-          <img src="https://unsplash.com" alt="Memory 3" />
-          <p>Celebrating our favorite milestone 🎉</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 3: TIMELINE -->
-    <section id="timeline" class="tab-content">
-      <h2>Our Journey So Far</h2>
-      <div class="timeline-item">
-        <div class="timeline-date">Month Year — The Beginning</div>
-        <p>The day we first started talking and couldn't stop smiling.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Month Year — Official</div>
-        <p>The day you officially became my girlfriend.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Today — Still Falling For You</div>
-        <p>Every day gets better with you by my side.</p>
-      </div>
-    </section>
-
-    <!-- TAB 4: INTERACTIVE REASON GENERATOR -->
-    <section id="jar" class="tab-content">
-      <h2>Why I Love You</h2>
-      <div class="jar-box">
-        <p>Click the button whenever you need a reminder:</p>
-        <div class="note-display" id="reason-text">Click below to pull a note from the jar! ❤️</div>
-        <button class="action-btn" onclick="newReason()">Pick a Reason ✨</button>
-      </div>
-    </section>
-
-    <!-- TAB 5: INTERACTIVE BUCKET LIST -->
-    <section id="bucket" class="tab-content">
-      <h2>Things We Need To Do Together</h2>
-      <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #64748b;">(Click an item to check it off!)</p>
-      <ul class="bucket-list">
-        <li onclick="this.classList.toggle('done')">✅ Go on a spontaneous road trip</li>
-        <li onclick="this.classList.toggle('done')">⬜ Watch a meteor shower together</li>
-        <li onclick="this.classList.toggle('done')">⬜ Cook a fancy dinner from scratch</li>
-        <li onclick="this.classList.toggle('done')">⬜ Travel to our dream destination</li>
-      </ul>
-    </section>
-  </main>
-
-  <script>
-    function openTab(evt, tabName) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(tabName).classList.add('active');
-      evt.currentTarget.classList.add('active');
-    }
-
-    const reasons = [
-      "The way your eyes light up when you laugh.",
-      "How safe and happy I feel whenever I'm around you.",
-      "Your kindness and how much you care for the people you love.",
-      "Even doing nothing with you feels like the best part of my day.",
-      "You always know how to make me smile no matter what."
-    ];
-
-    function newReason() {
-      const random = reasons[Math.floor(Math.random() * reasons.length)];
-      document.getElementById('reason-text').innerText = `"${random}"`;
-    }
-  </script>
-</body>
-</html>
+        <!-- Replace src="photo1.jpg" with your actual uploaded image filename -->
