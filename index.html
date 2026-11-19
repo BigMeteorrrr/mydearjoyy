@@ -9,47 +9,124 @@
       --bg: #fff5f7;
       --card: #ffffff;
       --primary: #e11d48;
+      --primary-dark: #be123c;
       --primary-light: #ffe4e6;
       --text: #334155;
       --heading: #1e293b;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 1rem 4rem; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 4rem;
+    }
 
-    header { text-align: center; margin-bottom: 1.2rem; }
+    header { text-align: center; margin-bottom: 1.3rem; }
     header h1 { color: var(--primary); font-size: 2.1rem; margin-bottom: 0.3rem; }
     header p { color: #64748b; font-size: 0.95rem; }
 
     /* Navigation Tabs */
-    .tabs { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 1.5rem; max-width: 850px; position: relative; z-index: 10; }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      max-width: 860px;
+      position: relative;
+      z-index: 10;
+    }
     .tab-btn {
-      background: var(--card); border: 2px solid var(--primary-light); color: var(--heading);
-      padding: 0.55rem 1rem; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+      background: var(--card);
+      border: 2px solid var(--primary-light);
+      color: var(--heading);
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
     }
     .tab-btn:hover { background: var(--primary-light); }
-    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25); }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+    }
 
     /* Main Card Container */
-    .container { width: 100%; max-width: 850px; background: var(--card); border-radius: 18px; padding: 2rem; box-shadow: 0 10px 30px rgba(225, 29, 72, 0.08); }
+    .container {
+      width: 100%;
+      max-width: 860px;
+      background: var(--card);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.08);
+    }
     .tab-content { display: none; animation: fadeIn 0.3s ease; }
     .tab-content.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    h2 { color: var(--heading); margin-bottom: 1rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem; }
-    p.intro { color: #64748b; margin-bottom: 1.2rem; line-height: 1.5; }
+    h2 {
+      color: var(--heading);
+      margin-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 0.5rem;
+    }
+    p.intro { color: #64748b; margin-bottom: 1.3rem; line-height: 1.5; }
 
     /* Page 1: Live Counter & About Us */
-    .counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin: 1.5rem 0; }
-    .time-box { background: var(--primary-light); padding: 1rem 0.5rem; border-radius: 12px; text-align: center; }
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      margin: 1.3rem 0;
+    }
+    .time-box {
+      background: var(--primary-light);
+      padding: 1rem 0.5rem;
+      border-radius: 12px;
+      text-align: center;
+    }
     .time-box span { display: block; font-size: 1.8rem; font-weight: 800; color: var(--primary); }
-    .time-box small { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--heading); }
-    .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
-    .info-card { background: #fffafb; border: 1px solid var(--primary-light); padding: 1.2rem; border-radius: 12px; }
+    .time-box small { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--heading); }
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .info-card {
+      background: #fffafb;
+      border: 1px solid var(--primary-light);
+      padding: 1.2rem;
+      border-radius: 12px;
+      line-height: 1.6;
+    }
     .info-card h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: 0.4rem; }
 
     /* Page 2: Photo Gallery + Lightbox */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
-    .photo-card { background: var(--bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+    .photo-card {
+      background: var(--bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
     .photo-card:hover { transform: translateY(-4px); }
     .photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; }
     .photo-card .caption { padding: 0.9rem; }
@@ -57,48 +134,169 @@
     .photo-card p { font-size: 0.88rem; color: #64748b; }
 
     /* Lightbox Modal */
-    .modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); z-index: 100; align-items: center; justify-content: center; padding: 1rem; }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
     .modal.open { display: flex; }
-    .modal-box { background: #fff; max-width: 550px; width: 100%; border-radius: 16px; overflow: hidden; text-align: center; padding-bottom: 1.2rem; }
+    .modal-box {
+      background: #fff;
+      max-width: 550px;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 1.2rem;
+    }
     .modal-box img { width: 100%; max-height: 60vh; object-fit: contain; background: #000; }
     .modal-box h3 { margin: 1rem 1rem 0.4rem; color: var(--heading); }
-    .modal-box p { margin: 0 1.2rem 1rem; color: var(--text); }
+    .modal-box p { margin: 0 1.2rem 1rem; color: var(--text); line-height: 1.5; }
 
     /* Page 3: Detailed Timeline */
-    .timeline-item { border-left: 3px solid var(--primary); padding-left: 1.3rem; margin-bottom: 1.6rem; position: relative; }
-    .timeline-item::before { content: '❤️'; position: absolute; left: -11px; top: 0; background: var(--card); font-size: 0.9rem; }
+    .timeline-item {
+      border-left: 3px solid var(--primary);
+      padding-left: 1.3rem;
+      margin-bottom: 1.6rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .timeline-item::before {
+      content: '❤️';
+      position: absolute;
+      left: -11px;
+      top: 0;
+      background: var(--card);
+      font-size: 0.9rem;
+    }
     .timeline-date { font-weight: 700; color: var(--primary); font-size: 0.85rem; text-transform: uppercase; }
     .timeline-title { font-weight: 700; color: var(--heading); font-size: 1.1rem; margin: 0.2rem 0; }
 
     /* Page 4: Open When Envelopes */
-    .envelopes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-    .envelope { background: var(--primary-light); border: 2px dashed var(--primary); border-radius: 12px; padding: 1.3rem; text-align: center; cursor: pointer; transition: 0.2s; }
+    .envelopes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .envelope {
+      background: var(--primary-light);
+      border: 2px dashed var(--primary);
+      border-radius: 12px;
+      padding: 1.3rem;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
     .envelope:hover { background: #fecdd3; }
     .envelope-icon { font-size: 2rem; margin-bottom: 0.4rem; }
-    .envelope-msg { display: none; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(225, 29, 72, 0.2); font-size: 0.95rem; color: var(--heading); line-height: 1.5; }
+    .envelope-msg {
+      display: none;
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(225, 29, 72, 0.2);
+      font-size: 0.95rem;
+      color: var(--heading);
+      line-height: 1.5;
+    }
     .envelope.opened { background: #fff; border-style: solid; }
     .envelope.opened .envelope-msg { display: block; }
 
     /* Page 5: Love Quiz */
-    .quiz-q { margin-bottom: 1.3rem; padding: 1rem; background: #fffafb; border-radius: 12px; border: 1px solid var(--primary-light); }
+    .quiz-q {
+      margin-bottom: 1.3rem;
+      padding: 1rem;
+      background: #fffafb;
+      border-radius: 12px;
+      border: 1px solid var(--primary-light);
+    }
     .quiz-q p { font-weight: 600; margin-bottom: 0.7rem; color: var(--heading); }
-    .quiz-opt { display: block; width: 100%; text-align: left; background: #fff; border: 1px solid #cbd5e1; padding: 0.6rem 0.9rem; border-radius: 8px; margin-bottom: 0.4rem; cursor: pointer; }
+    .quiz-opt {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      margin-bottom: 0.4rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
     .quiz-opt:hover { background: var(--primary-light); }
     .quiz-opt.correct { background: #dcfce7; border-color: #16a34a; color: #166534; font-weight: 600; }
     .quiz-opt.wrong { background: #fee2e2; border-color: #dc2626; color: #991b1b; }
+    #quiz-score { font-weight: 700; color: var(--primary); margin-top: 0.5rem; font-size: 1.05rem; }
 
     /* Page 6: Bucket List & Reason Jar */
     .bucket-list { list-style: none; margin-bottom: 2rem; }
-    .bucket-list li { padding: 0.75rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+    .bucket-list li {
+      padding: 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      cursor: pointer;
+    }
     .bucket-list li.done { text-decoration: line-through; color: #94a3b8; }
-    .note-display { min-height: 75px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-style: italic; background: var(--primary-light); border-radius: 12px; padding: 1rem; margin: 1rem 0; text-align: center; }
+    .note-display {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-style: italic;
+      background: var(--primary-light);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      text-align: center;
+      color: var(--heading);
+    }
 
     /* Page 7: Playful Surprise Question */
-    .surprise-box { text-align: center; padding: 2rem 1rem; position: relative; min-height: 260px; }
-    .btn-group { display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .btn { background: var(--primary); color: #fff; border: none; padding: 0.75rem 1.6rem; border-radius: 999px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+    .surprise-box {
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      min-height: 290px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, font-size 0.2s ease, padding 0.2s ease;
+    }
+    .btn:hover { background: var(--primary-dark); }
     .btn-no { background: #64748b; position: relative; transition: 0.15s ease; }
-    #surprise-reply { display: none; margin-top: 1.5rem; font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+    #surprise-reply {
+      display: none;
+      margin-top: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
 
     @media (max-width: 520px) {
       .counter-grid { grid-template-columns: repeat(2, 1fr); }
@@ -110,7 +308,7 @@
 
   <header>
     <h1>For My Favorite Person ❤️</h1>
-    <p>Tap through the pages to explore our memories, notes, and surprises</p>
+    <p>Tap through the pages to explore our memories, letters, and surprises</p>
   </header>
 
   <nav class="tabs">
@@ -127,34 +325,96 @@
 
     <!-- PAGE 1: HOME & LIVE RELATIONSHIP TIMER -->
     <section id="home" class="tab-content active">
-      <h2>Welcome To Our Corner of the Web</h2>
-      <p class="intro">Every second with you counts. Here is how long we have been making memories together:</p>
-
-      <div class="counter-grid">
-        <div class="time-box"><span id="days">0</span><small>Days</small></div>
-        <div class="time-box"><span id="hours">0</span><small>Hours</small></div>
-        <div class="time-box"><span id="minutes">0</span><small>Minutes</small></div>
-        <div class="time-box"><span id="seconds">0</span><small>Seconds</small></div>
-      </div>
-
-      <div class="info-cards">
-        <div class="info-card">
-          <h3>💑 About Us</h3>
-          <p><strong>First Met:</strong> [Add Date & Place]<br>
-             <strong>Official Date:</strong> [Add Anniversary Date]<br>
-             <strong>Our Song:</strong> [Add Song Title]</p>
-        </div>
-        <div class="info-card">
-          <h3>🌟 Why I Made This</h3>
-          <p>I wanted to build something permanent where you can look back at our photos, read my letters anytime you miss me, and see how much I appreciate you.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGE 2: PHOTO GALLERY WITH LIGHTBOX -->
-    <section id="gallery" class="tab-content">
-      <h2>Our Photo Album</h2>
-      <p class="intro">Tap any photo below to view it full-size and read the story behind it.</p>
-
-      <div class="gallery">
-        <div class="photo-card" onclick="openModal('https://unsplash.com', 'Our First Date ☕', 'I was so nervous before meeting you, but the moment you smiled, everything felt effortless.')">
+document.addEventListener("DOMContentLoaded", function () {
+// 1. TAB SWITCHING
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+tabButtons.forEach(function (btn) {
+btn.addEventListener('click', function () {
+const targetId = this.getAttribute('data-target');
+tabButtons.forEach(function (b) { b.classList.remove('active'); });
+tabContents.forEach(function (c) { c.classList.remove('active'); });
+this.classList.add('active');
+const targetSection = document.getElementById(targetId);
+if (targetSection) {
+targetSection.classList.add('active');
+}
+});
+});
+// 2. LIVE RELATIONSHIP TIMER (Set your start date here: YYYY-MM-DDTHH:MM:SS)
+const startDate = new Date("2025-02-14T00:00:00").getTime();
+function updateTimer() {
+const now = new Date().getTime();
+const diff = now - startDate;
+if (diff > 0) {
+document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+document.getElementById("hours").innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
+document.getElementById("minutes").innerText = Math.floor((diff / 1000 / 60) % 60);
+document.getElementById("seconds").innerText = Math.floor((diff / 1000) % 60);
+}
+}
+updateTimer();
+setInterval(updateTimer, 1000);
+// 3. PLAYFUL DODGING "NO" BUTTON + GROWING "YES" BUTTON
+const noBtn = document.getElementById('no-btn');
+const yesBtn = document.getElementById('yes-btn');
+let yesScale = 1;
+const noTexts = ["Are you sure? 🥺", "Think again! 😭", "Wrong button! 👉", "Nice try! 😂", "Click Yes! ❤️"];
+let noIndex = 0;
+function moveNoBtn() {
+const x = Math.floor(Math.random() * 160) - 80;
+const y = Math.floor(Math.random() * 110) - 55;
+noBtn.style.transform = "translate(" + x + "px, " + y + "px)";
+noBtn.innerText = noTexts[noIndex % noTexts.length];
+noIndex++;
+yesScale = Math.min(yesScale + 0.15, 2.2);
+yesBtn.style.transform = "scale(" + yesScale + ")";
+}
+if (noBtn) {
+noBtn.addEventListener('mouseover', moveNoBtn);
+noBtn.addEventListener('touchstart', function (e) {
+e.preventDefault();
+moveNoBtn();
+});
+noBtn.addEventListener('click', moveNoBtn);
+}
+});
+// 4. PHOTO LIGHTBOX
+function openModal(imgSrc, title, desc) {
+document.getElementById('modalImg').src = imgSrc;
+document.getElementById('modalTitle').innerText = title;
+document.getElementById('modalDesc').innerText = desc;
+document.getElementById('photoModal').classList.add('open');
+}
+function closeModal() {
+document.getElementById('photoModal').classList.remove('open');
+}
+// 5. QUIZ CHECKER
+function checkAnswer(btn, isCorrect) {
+const siblings = btn.parentElement.querySelectorAll('.quiz-opt');
+siblings.forEach(function (b) { b.classList.remove('correct', 'wrong'); });
+btn.classList.add(isCorrect ? 'correct' : 'wrong');
+const totalCorrect = document.querySelectorAll('.quiz-opt.correct').length;
+const scoreEl = document.getElementById('quiz-score');
+if (scoreEl) {
+scoreEl.innerText = "Score: " + totalCorrect + " / 3 correct ❤️";
+}
+}
+// 6. REASON GENERATOR
+const reasons = [
+"The way your eyes light up whenever you talk about something you love.",
+"How peaceful and happy I feel every single time I am around you.",
+"Your kindness, patience, and how deeply you care for everyone.",
+"Even ordinary errands feel like a fun date when you are beside me.",
+"You always know how to make me smile even on my busiest days."
+];
+function newReason() {
+const pick = reasons[Math.floor(Math.random() * reasons.length)];
+document.getElementById('reason-text').innerText = '"' + pick + '"';
+}
+// 7. ACCEPT SURPRISE
+function acceptLove() {
+document.getElementById('surprise-reply').style.display = 'block';
+document.getElementById('no-btn').style.display = 'none';
+document.getElementById('yes-btn').style.transform = 'scale(1.1)';
+}
