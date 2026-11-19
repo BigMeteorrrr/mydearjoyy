@@ -325,3 +325,192 @@
 
     <!-- PAGE 1: HOME & LIVE RELATIONSHIP TIMER -->
     <section id="home" class="tab-content active">
+      <h2>Welcome To Our Corner of the Web</h2>
+      <p class="intro">Every second with you counts. Here is how long we have been making memories together:</p>
+
+      <div class="counter-grid">
+        <div class="time-box"><span id="days">0</span><small>Days</small></div>
+        <div class="time-box"><span id="hours">0</span><small>Hours</small></div>
+        <div class="time-box"><span id="minutes">0</span><small>Minutes</small></div>
+        <div class="time-box"><span id="seconds">0</span><small>Seconds</small></div>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <h3>💑 About Us</h3>
+          <p>
+            <strong>First Met:</strong> October 12, 2024 • Downtown Coffee Shop<br>
+            <strong>Official Date:</strong> February 14, 2025<br>
+            <strong>Our Song:</strong> "Unconditionally" – Katy Perry
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>🌟 Why I Made This</h3>
+          <p>I wanted to build a permanent little space on the internet where you can look back at our favorite photos, open letters whenever you miss me, and always remember how much I love you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: PHOTO GALLERY -->
+    <section id="gallery" class="tab-content">
+      <h2>Our Photo Album</h2>
+      <p class="intro">Tap any photo below to view it full-size and read the story behind it.</p>
+
+      <div class="gallery">
+        <div class="photo-card" onclick="openModal('https://unsplash.com', 'Our First Date ☕', 'I was so nervous before meeting you, but the second you smiled, all my worries disappeared.')">
+          <img src="https://unsplash.com" alt="Our First Date" />
+          <div class="caption">
+            <h4>Our First Date ☕</h4>
+            <p>Tap to read the full memory...</p>
+          </div>
+        </div>
+
+        <div class="photo-card" onclick="openModal('https://unsplash.com', 'Golden Hour Walk 🌅', 'One of my favorite afternoons just walking around, taking silly pictures, and talking for hours.')">
+          <img src="https://unsplash.com" alt="Golden Hour Walk" />
+          <div class="caption">
+            <h4>Golden Hour Walk 🌅</h4>
+            <p>Tap to read the full memory...</p>
+          </div>
+        </div>
+
+        <div class="photo-card" onclick="openModal('https://unsplash.com', 'Celebrating Us 🎉', 'No matter where we go or what we do, being beside you is always my favorite place to be.')">
+          <img src="https://unsplash.com" alt="Celebrating Us" />
+          <div class="caption">
+            <h4>Celebrating Us 🎉</h4>
+            <p>Tap to read the full memory...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: TIMELINE -->
+    <section id="timeline" class="tab-content">
+      <h2>Our Timeline</h2>
+      <p class="intro">A look back at the chapters that brought us to where we are today.</p>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Chapter 1 • October 2024</div>
+        <div class="timeline-title">The First Hello</div>
+        <p>The day we first started talking and stayed up way too late sending messages back and forth without running out of things to say.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Chapter 2 • November 2024</div>
+        <div class="timeline-title">Our First Hangout</div>
+        <p>Grabbing iced coffee and walking around until sunset—that was the moment I knew I wanted to spend every weekend with you.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Chapter 3 • February 14, 2025</div>
+        <div class="timeline-title">Becoming Official</div>
+        <p>The best decision I ever made. Officially calling you my girlfriend turned ordinary days into my favorite memories.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Chapter 4 • Today & Forever</div>
+        <div class="timeline-title">Still Falling For You</div>
+        <p>Every day with you continues to be the brightest part of my life, and I cannot wait for everything ahead of us.</p>
+      </div>
+    </section>
+
+    <!-- PAGE 4: OPEN WHEN ENVELOPES -->
+    <section id="letters" class="tab-content">
+      <h2>"Open When..." Letters</h2>
+      <p class="intro">Tap an envelope below to open a special message written for that exact mood.</p>
+
+      <div class="envelopes">
+        <div class="envelope" onclick="this.classList.toggle('opened')">
+          <div class="envelope-icon">🥺</div>
+          <strong>Open when you miss me</strong>
+          <div class="envelope-msg">Close your eyes and remember I'm always thinking of you. Send me a message or call me right now—I always have time for you! ❤️</div>
+        </div>
+
+        <div class="envelope" onclick="this.classList.toggle('opened')">
+          <div class="envelope-icon">🌧️</div>
+          <strong>Open when you have a bad day</strong>
+          <div class="envelope-msg">Take a deep breath. You are stronger and more capable than you know, and I am always right here in your corner cheering you on.</div>
+        </div>
+
+        <div class="envelope" onclick="this.classList.toggle('opened')">
+          <div class="envelope-icon">😴</div>
+          <strong>Open when you can't sleep</strong>
+          <div class="envelope-msg">Put your phone down after reading this, get cozy, and think about all the fun dates and trips we have ahead of us. Sweet dreams, my love.</div>
+        </div>
+
+        <div class="envelope" onclick="this.classList.toggle('opened')">
+          <div class="envelope-icon">🥰</div>
+          <strong>Open when you need a smile</strong>
+          <div class="envelope-msg">Quick reminder: You have the prettiest smile in the entire world, and you are my favorite person today, tomorrow, and always.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: COUPLE QUIZ -->
+    <section id="quiz" class="tab-content">
+      <h2>How Well Do You Know Us? 🎯</h2>
+      <p class="intro">Test your memory! Tap an answer to see if you got it right.</p>
+
+      <div class="quiz-q">
+        <p>1. What did we do on our very first hangout?</p>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, true)">A) Grabbed coffee and talked for hours ☕</button>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, false)">B) Went skydiving</button>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, false)">C) Watched a 4-hour documentary</button>
+      </div>
+
+      <div class="quiz-q">
+        <p>2. What is my favorite thing about you?</p>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, false)">A) Only your taste in snacks</button>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, true)">B) Your laugh, your kindness, and everything about you ❤️</button>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, false)">C) How fast you text back</button>
+      </div>
+
+      <div class="quiz-q">
+        <p>3. Who fell in love first?</p>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, true)">A) Definitely me! 🥰</button>
+        <button type="button" class="quiz-opt" onclick="checkAnswer(this, false)">B) You (nice try!)</button>
+      </div>
+      <div id="quiz-score"></div>
+    </section>
+
+    <!-- PAGE 6: BUCKET LIST & LOVE JAR -->
+    <section id="bucket" class="tab-content">
+      <h2>Our Bucket List & Love Jar ✨</h2>
+      <p class="intro">Tap items to check them off as we complete them together:</p>
+
+      <ul class="bucket-list">
+        <li class="done" onclick="this.classList.toggle('done')">✅ Go on a spontaneous late-night food run</li>
+        <li onclick="this.classList.toggle('done')">⬜ Watch the sunrise together at the beach</li>
+        <li onclick="this.classList.toggle('done')">⬜ Take a road trip singing our favorite playlist</li>
+        <li onclick="this.classList.toggle('done')">⬜ Cook a three-course dinner together from scratch</li>
+        <li onclick="this.classList.toggle('done')">⬜ Travel to our dream vacation spot</li>
+      </ul>
+
+      <h2>Need a Quick Reminder?</h2>
+      <div class="note-display" id="reason-text">Tap the button below to pull a reason why I love you! ❤️</div>
+      <div style="text-align: center;">
+        <button type="button" class="btn" onclick="newReason()">Pick a Reason ✨</button>
+      </div>
+    </section>
+
+    <!-- PAGE 7: SURPRISE -->
+    <section id="surprise" class="tab-content">
+      <h2>One Last Question... 🌷</h2>
+      <div class="surprise-box">
+        <h3 style="font-size: 1.5rem; color: var(--heading); margin-bottom: 0.5rem;">Will you go on a date with me this weekend? 🥺</h3>
+        <p style="color: #64748b;">(Try clicking "No" if you dare!)</p>
+
+        <div class="btn-group">
+          <button type="button" class="btn" id="yes-btn" onclick="acceptLove()">Yes, of course! ❤️</button>
+          <button type="button" class="btn btn-no" id="no-btn">No 😢</button>
+        </div>
+
+        <div id="surprise-reply">I love youuuu my dear! 😊🌷❤️ Can't wait for our date!</div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="modal" id="photoModal" onclick="closeModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <img id="modalImg" src="" alt="Full Memory" />
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <button type="button" class="btn" onclick="closeModal()">Close</button>
+
