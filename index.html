@@ -513,4 +513,109 @@
       <h3 id="modalTitle"></h3>
       <p id="modalDesc"></p>
       <button type="button" class="btn" onclick="closeModal()">Close</button>
+       </div>
+</div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var tabButtons = document.querySelectorAll('.tab-btn');
+      var tabContents = document.querySelectorAll('.tab-content');
+
+      tabButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var targetId = this.getAttribute('data-target');
+          tabButtons.forEach(function (b) { b.classList.remove('active'); });
+          tabContents.forEach(function (c) { c.classList.remove('active'); });
+          this.classList.add('active');
+          var targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.classList.add('active');
+          }
+        });
+      });
+
+      var startDate = new Date("2025-02-14T00:00:00").getTime();
+
+      function updateTimer() {
+        var now = new Date().getTime();
+        var diff = now - startDate;
+        if (diff > 0) {
+          document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+          document.getElementById("hours").innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          document.getElementById("minutes").innerText = Math.floor((diff / 1000 / 60) % 60);
+          document.getElementById("seconds").innerText = Math.floor((diff / 1000) % 60);
+        }
+      }
+      updateTimer();
+      setInterval(updateTimer, 1000);
+
+      var noBtn = document.getElementById('no-btn');
+      var yesBtn = document.getElementById('yes-btn');
+      var yesScale = 1;
+      var noTexts = ["Are you sure? 🥺", "Think again! 😭", "Wrong button! 👉", "Nice try! 😂", "Click Yes! ❤️"];
+      var noIndex = 0;
+
+      function moveNoBtn() {
+        var x = Math.floor(Math.random() * 160) - 80;
+        var y = Math.floor(Math.random() * 110) - 55;
+        noBtn.style.transform = "translate(" + x + "px, " + y + "px)";
+        noBtn.innerText = noTexts[noIndex % noTexts.length];
+        noIndex++;
+
+        yesScale = Math.min(yesScale + 0.15, 2.2);
+        yesBtn.style.transform = "scale(" + yesScale + ")";
+      }
+
+      if (noBtn) {
+        noBtn.addEventListener('mouseover', moveNoBtn);
+        noBtn.addEventListener('touchstart', function (e) {
+          e.preventDefault();
+          moveNoBtn();
+        });
+        noBtn.addEventListener('click', moveNoBtn);
+      }
+    });
+
+    function openModal(imgSrc, title, desc) {
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('photoModal').classList.add('open');
+    }
+    function closeModal() {
+      document.getElementById('photoModal').classList.remove('open');
+    }
+
+    function checkAnswer(btn, isCorrect) {
+      var siblings = btn.parentElement.querySelectorAll('.quiz-opt');
+      siblings.forEach(function (b) { b.classList.remove('correct', 'wrong'); });
+      btn.classList.add(isCorrect ? 'correct' : 'wrong');
+
+      var totalCorrect = document.querySelectorAll('.quiz-opt.correct').length;
+      var scoreEl = document.getElementById('quiz-score');
+      if (scoreEl) {
+        scoreEl.innerText = "Score: " + totalCorrect + " / 3 correct ❤️";
+      }
+    }
+
+    var reasons = [
+      "The way your eyes light up whenever you talk about something you love.",
+      "How peaceful and happy I feel every single time I am around you.",
+      "Your kindness, patience, and how deeply you care for everyone.",
+      "Even ordinary errands feel like a fun date when you are beside me.",
+      "You always know how to make me smile even on my busiest days."
+    ];
+    function newReason() {
+      var pick = reasons[Math.floor(Math.random() * reasons.length)];
+      document.getElementById('reason-text').innerText = '"' + pick + '"';
+    }
+
+    function acceptLove() {
+      document.getElementById('surprise-reply').style.display = 'block';
+      document.getElementById('no-btn').style.display = 'none';
+      document.getElementById('yes-btn').style.transform = 'scale(1.1)';
+    }
+  </script>
+
+</body>
+</html>
 
