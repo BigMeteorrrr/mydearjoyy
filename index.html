@@ -302,9 +302,74 @@
       .counter-grid { grid-template-columns: repeat(2, 1fr); }
       .container { padding: 1.3rem; }
     }
+        /* Falling Hearts, Tulips & Violet Lilies */
+    .falling-item {
+      position: fixed;
+      top: -50px;
+      z-index: 9999;
+      pointer-events: none;
+      user-select: none;
+      animation: fallDown linear forwards;
+    }
+    @keyframes fallDown {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+        /* Floating Music Toggle Button */
+    .music-toggle {
+      display: none;
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      z-index: 95;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(225, 29, 72, 0.3);
+    }
+    .music-toggle.visible {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+
   </style>
 </head>
 <body>
+    <!-- Pop-Up Message Window -->
+  <div class="modal" id="topSurpriseModal" onclick="closeTopSurprise()">
+      <!-- Hidden YouTube Audio Container for "Perfect - Ed Sheeran" -->
+  <div id="yt-music-box" style="position: fixed; width: 1px; height: 1px; opacity: 0.01; pointer-events: none; overflow: hidden;"></div>
+
+  <!-- Floating Play/Pause Control -->
+  <button type="button" class="music-toggle" id="musicBtn" onclick="toggleMusic()">⏸️ Pause "Perfect"</button>
+
+    <div class="gift-popup-box" onclick="event.stopPropagation()">
+      <div style="font-size: 3rem;">🎉❤️🌷🪻</div>
+      <h3>Surprise, My Love!</h3>
+      <p>
+        I just wanted to remind you how lucky I am to have you in my life. You make every single day brighter, happier, and full of love.<br><br>
+        <strong>I love you endlessly! 🥰</strong>
+      </p>
+      <button type="button" class="btn" onclick="celebrateLove()">Aw, I Love You Too! ❤️</button>
+    </div>
+  </div>
+
 
   <header>
     <h1>For My Favorite Person ❤️</h1>
@@ -614,6 +679,138 @@
       document.getElementById('no-btn').style.display = 'none';
       document.getElementById('yes-btn').style.transform = 'scale(1.1)';
     }
+        function openTopSurprise() {
+      document.getElementById('topSurpriseModal').classList.add('open');
+    }
+
+    function closeTopSurprise() {
+      document.getElementById('topSurpriseModal').classList.remove('open');
+    }
+
+       var isPlaying = false;
+
+    function startPerfectSong() {
+      var box = document.getElementById('yt-music-box');
+      if (!box.innerHTML) {
+        box.innerHTML = '<iframe id="yt-iframe" width="200" height="200" src="https://youtube.com" allow="autoplay; encrypted-media" frameborder="0"></iframe>';
+      }
+      isPlaying = true;
+      var btn = document.getElementById('musicBtn');
+      if (btn) {
+        btn.classList.add('visible');
+        btn.innerText = '⏸️ Pause "Perfect"';
+      }
+    }
+
+    function toggleMusic() {
+      var iframe = document.getElementById('yt-iframe');
+      var btn = document.getElementById('musicBtn');
+      if (!iframe) return;
+
+      if (isPlaying) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        btn.innerText = '▶️ Play "Perfect"';
+        isPlaying = false;
+      } else {
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        btn.innerText = '⏸️ Pause "Perfect"';
+        isPlaying = true;
+      }
+    }
+
+    function celebrateLove() {
+      closeTopSurprise();
+      startPerfectSong();
+
+      var items = ["❤️", "💖", "🌷", "🌷", "🪻", "💜", "🌷", "❤️", "🪻"];
+      var totalCount = 55;
+
+      for (var i = 0; i < totalCount; i++) {
+        (function (index) {
+          setTimeout(function () {
+            var el = document.createElement("div");
+            el.className = "falling-item";
+            el.innerText = items[Math.floor(Math.random() * items.length)];
+            el.style.left = Math.random() * 96 + "vw";
+            el.style.fontSize = (Math.floor(Math.random() * 18) + 22) + "px";
+
+            var duration = (Math.random() * 2.5 + 2.5).toFixed(2);
+            el.style.animationDuration = duration + "s";
+
+            document.body.appendChild(el);
+
+            setTimeout(function () {
+              if (el.parentNode) {
+                el.parentNode.removeChild(el);
+              }
+            }, parseFloat(duration) * 1000 + 200);
+          }, index * 45);
+        })(i);
+      }
+    }
+var isPlaying = false;
+
+    function startPerfectSong() {
+      var box = document.getElementById('yt-music-box');
+      if (!box.innerHTML) {
+        box.innerHTML = '<iframe id="yt-iframe" width="200" height="200" src="https://youtube.com" allow="autoplay; encrypted-media" frameborder="0"></iframe>';
+      }
+      isPlaying = true;
+      var btn = document.getElementById('musicBtn');
+      if (btn) {
+        btn.classList.add('visible');
+        btn.innerText = '⏸️ Pause "Perfect"';
+      }
+    }
+
+    function toggleMusic() {
+      var iframe = document.getElementById('yt-iframe');
+      var btn = document.getElementById('musicBtn');
+      if (!iframe) return;
+
+      if (isPlaying) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        btn.innerText = '▶️ Play "Perfect"';
+        isPlaying = false;
+      } else {
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        btn.innerText = '⏸️ Pause "Perfect"';
+        isPlaying = true;
+      }
+    }
+
+    function celebrateLove() {
+      closeTopSurprise();
+      startPerfectSong();
+
+      var items = ["❤️", "💖", "🌷", "🌷", "🪻", "💜", "🌷", "❤️", "🪻"];
+      var totalCount = 55;
+
+      for (var i = 0; i < totalCount; i++) {
+        (function (index) {
+          setTimeout(function () {
+            var el = document.createElement("div");
+            el.className = "falling-item";
+            el.innerText = items[Math.floor(Math.random() * items.length)];
+            el.style.left = Math.random() * 96 + "vw";
+            el.style.fontSize = (Math.floor(Math.random() * 18) + 22) + "px";
+
+            var duration = (Math.random() * 2.5 + 2.5).toFixed(2);
+            el.style.animationDuration = duration + "s";
+
+            document.body.appendChild(el);
+
+            setTimeout(function () {
+              if (el.parentNode) {
+                el.parentNode.removeChild(el);
+              }
+            }, parseFloat(duration) * 1000 + 200);
+          }, index * 45);
+          })(i);
+      }
+    }
+
+
   </script>
 
 </body>
